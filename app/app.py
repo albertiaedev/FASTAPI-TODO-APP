@@ -57,3 +57,14 @@ async def update_task(ID:int,body:dict) -> dict:
 
 
 #@delete (delete)
+@app.delete('/tasks/{ID}',tags=['TASK'])
+async def delete_task(ID:int) -> dict:
+    for task in tasks:
+        if int((task['ID'])) == ID:
+            tasks.remove(task)
+            return {
+                'data':f'Task #{ID} has been deleted'
+            }
+    return {
+        'data':f'Task #{ID} does not exist'
+    }
