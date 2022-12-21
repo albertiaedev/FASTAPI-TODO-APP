@@ -5,13 +5,15 @@ app=FastAPI()
 @app.get('/',tags=['ROOT'])
 async def root() -> dict:
     return{
-    "Hello":"World"
+        "TO-DO APP":"Now there's an easiest way to manage your tasks"
     }
 
 #@get (read)
 @app.get('/tasks',tags=['TASK'])
 async def get_task() -> dict:
-    return{'data':tasks}
+    return{
+        'data':tasks
+    }
 
 tasks = [
     {
