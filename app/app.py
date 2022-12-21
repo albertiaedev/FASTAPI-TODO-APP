@@ -43,5 +43,17 @@ async def add_task(task:dict) -> dict:
 
 
 #@put (update)
+@app.put('/tasks/{ID}',tags=['TASK'])
+async def update_task(ID:int,body:dict) -> dict:
+    for task in tasks:
+        if int((task['ID'])) == ID:
+            task['Task']=body['Task']
+            return {
+                'data':f'Task #{ID} has been updated'
+            }
+    return {
+        'data':f'Task #{ID} does not exist'
+    }
+
 
 #@delete (delete)
