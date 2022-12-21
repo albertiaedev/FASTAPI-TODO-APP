@@ -9,8 +9,8 @@ async def root() -> dict:
     }
 
 #@get (read)
-@app.get('/get',tags=['GET'])
-async def get_todo() -> dict:
+@app.get('/tasks',tags=['TASK'])
+async def get_task() -> dict:
     return{'data':tasks}
 
 tasks = [
@@ -32,7 +32,15 @@ tasks = [
     }
 ]
 
+
 #@post (create)
+@app.post('/tasks',tags=['TASK'])
+async def add_task(task:dict) -> dict:
+    tasks.append(task)
+    return {
+        'data':'A new task has been created'
+    }
+
 
 #@put (update)
 
